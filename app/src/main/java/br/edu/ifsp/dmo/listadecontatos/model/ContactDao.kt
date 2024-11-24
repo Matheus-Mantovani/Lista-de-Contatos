@@ -1,6 +1,8 @@
 package br.edu.ifsp.dmo.listadecontatos.model
 
 import java.util.LinkedList
+import java.util.stream.Collector
+import java.util.stream.Collectors
 
 object ContactDao {
 
@@ -11,6 +13,10 @@ object ContactDao {
     }
 
     fun findAll(): List<Contact> {
-        return ArrayList(dataset)
+        //return ArrayList(dataset).stream()
+        //    .sorted { c1, c2 -> c1.name.compareTo(c2.name, true) }
+        //    .collect(Collectors.toList())
+
+        return ArrayList(dataset).sortedBy{it.name.lowercase()}
     }
 }
